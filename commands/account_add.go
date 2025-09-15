@@ -6,7 +6,7 @@ import "github.com/spf13/cobra"
 func CreateCommandAccountAdd() *cobra.Command {
 	account_add := &cobra.Command{
 		Use:   "add",
-		Short: "Add a previously created account from a seed, private key or public key (read-only).",
+		Short: "Add a previously created account from a seed, private key or public key (read-only). Specify --single_key for single address or vanity address accounts.",
 		Run: func(cmd *cobra.Command, args []string) {
 			account_name, err := cmd.Flags().GetString("account_name")
 			fmt.Println(account_name)

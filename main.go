@@ -2,9 +2,9 @@ package main
 
 import "fmt"
 import "os"
-
 import "lbry/cli/commands"
 import "github.com/spf13/cobra"
+import cc "github.com/ivanpirog/coloredcobra"
 
 func main() {
 	cmd := createCommand()
@@ -23,6 +23,15 @@ func createCommand() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	cc.Init(&cc.Config{
+		RootCmd:  rootCmd,
+		Headings: cc.HiCyan + cc.Bold + cc.Underline,
+		Commands: cc.HiYellow + cc.Bold,
+		Example:  cc.Italic,
+		ExecName: cc.Bold,
+		Flags:    cc.Bold,
+	})
 
 	rootCmd.AddCommand(commands.CreateCommandAccount())
 
