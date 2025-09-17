@@ -1,15 +1,32 @@
 package commands
 
+import "context"
+import "encoding/json"
+import "fmt"
 import "github.com/spf13/cobra"
+import "github.com/ybbus/jsonrpc/v3"
 
 func CreateCommandStop() *cobra.Command {
 	stop := &cobra.Command{
 		Use:   "stop",
 		Short: "Stop lbrynet API server.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
+		Run:   HandleCommandStop,
 	}
 
 	return stop
+}
+
+func HandleCommandStop(cmd *cobra.Command, args []string) {
+	if len(args) != 0 {
+		cmd.Help()
+		return
+	}
+	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
+	resp, err := rpcClient.Call(context.Background(), "stop")
+	if err != nil {
+		fmt.Println("Could not connect to daemon. Are you sure it's running?")
+		return
+	}
+	result, _ := json.MarshalIndent(resp.Result, "", "\t")
+	fmt.Println(string(result))
 }

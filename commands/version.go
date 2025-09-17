@@ -17,6 +17,10 @@ func CreateCommandVersion() *cobra.Command {
 }
 
 func HandleCommandVersion(cmd *cobra.Command, args []string) {
+	if len(args) != 0 {
+		cmd.Help()
+		return
+	}
 	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
 	resp, err := rpcClient.Call(context.Background(), "version")
 	if err != nil {
@@ -25,5 +29,4 @@ func HandleCommandVersion(cmd *cobra.Command, args []string) {
 	}
 	result, _ := json.MarshalIndent(resp.Result, "", "\t")
 	fmt.Println(string(result))
-
 }
