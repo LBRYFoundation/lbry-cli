@@ -23,6 +23,8 @@ func createCommand() *cobra.Command {
 			cmd.Help()
 		},
 	}
+	rootCmd.CompletionOptions.DisableDefaultCmd = true
+	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
 
 	cc.Init(&cc.Config{
 		RootCmd:  rootCmd,
@@ -34,6 +36,14 @@ func createCommand() *cobra.Command {
 	})
 
 	rootCmd.AddCommand(commands.CreateCommandAccount())
+	rootCmd.AddCommand(commands.CreateCommandFFmpegFind())
+	rootCmd.AddCommand(commands.CreateCommandGet())
+	rootCmd.AddCommand(commands.CreateCommandPublish())
+	rootCmd.AddCommand(commands.CreateCommandResolve())
+	rootCmd.AddCommand(commands.CreateCommandRoutingTableGet())
+	rootCmd.AddCommand(commands.CreateCommandStatus())
+	rootCmd.AddCommand(commands.CreateCommandTraceMAlloc())
+	rootCmd.AddCommand(commands.CreateCommandVersion())
 
 	return rootCmd
 }

@@ -1,4 +1,4 @@
-package commands
+package commands_account
 
 import "github.com/spf13/cobra"
 
