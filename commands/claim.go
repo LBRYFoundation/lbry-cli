@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/claim"
 import "github.com/spf13/cobra"
 
 func CreateCommandClaim() *cobra.Command {
@@ -10,6 +11,8 @@ func CreateCommandClaim() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	claim.AddCommand(commands.CreateCommandClaimSearch())
 
 	return claim
 }

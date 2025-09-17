@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/address"
 import "github.com/spf13/cobra"
 
 func CreateCommandAddress() *cobra.Command {
@@ -10,6 +11,10 @@ func CreateCommandAddress() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	address.AddCommand(commands.CreateCommandAddressIsMine())
+	address.AddCommand(commands.CreateCommandAddressList())
+	address.AddCommand(commands.CreateCommandAddressUnused())
 
 	return address
 }

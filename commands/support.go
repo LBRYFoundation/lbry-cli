@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/support"
 import "github.com/spf13/cobra"
 
 func CreateCommandSupport() *cobra.Command {
@@ -10,6 +11,11 @@ func CreateCommandSupport() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	support.AddCommand(commands.CreateCommandSupportAbandon())
+	support.AddCommand(commands.CreateCommandSupportCreate())
+	support.AddCommand(commands.CreateCommandSupportList())
+	support.AddCommand(commands.CreateCommandSupportSum())
 
 	return support
 }

@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/purchase"
 import "github.com/spf13/cobra"
 
 func CreateCommandPurchase() *cobra.Command {
@@ -10,6 +11,9 @@ func CreateCommandPurchase() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	purchase.AddCommand(commands.CreateCommandPurchaseCreate())
+	purchase.AddCommand(commands.CreateCommandPurchaseList())
 
 	return purchase
 }

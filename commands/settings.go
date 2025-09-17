@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/settings"
 import "github.com/spf13/cobra"
 
 func CreateCommandSettings() *cobra.Command {
@@ -10,6 +11,10 @@ func CreateCommandSettings() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	settings.AddCommand(commands.CreateCommandSettingsClear())
+	settings.AddCommand(commands.CreateCommandSettingsGet())
+	settings.AddCommand(commands.CreateCommandSettingsSet())
 
 	return settings
 }

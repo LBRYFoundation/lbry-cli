@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/peer"
 import "github.com/spf13/cobra"
 
 func CreateCommandPeer() *cobra.Command {
@@ -10,6 +11,9 @@ func CreateCommandPeer() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	peer.AddCommand(commands.CreateCommandPeerList())
+	peer.AddCommand(commands.CreateCommandPeerPing())
 
 	return peer
 }

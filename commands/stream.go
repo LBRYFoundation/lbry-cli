@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/stream"
 import "github.com/spf13/cobra"
 
 func CreateCommandStream() *cobra.Command {
@@ -10,6 +11,13 @@ func CreateCommandStream() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	stream.AddCommand(commands.CreateCommandStreamAbandon())
+	stream.AddCommand(commands.CreateCommandStreamCostEstimate())
+	stream.AddCommand(commands.CreateCommandStreamCreate())
+	stream.AddCommand(commands.CreateCommandStreamList())
+	stream.AddCommand(commands.CreateCommandStreamRepost())
+	stream.AddCommand(commands.CreateCommandStreamUpdate())
 
 	return stream
 }

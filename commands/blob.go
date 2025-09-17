@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/blob"
 import "github.com/spf13/cobra"
 
 func CreateCommandBlob() *cobra.Command {
@@ -10,6 +11,14 @@ func CreateCommandBlob() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	blob.AddCommand(commands.CreateCommandBlobAnnounce())
+	blob.AddCommand(commands.CreateCommandBlobClean())
+	blob.AddCommand(commands.CreateCommandBlobDelete())
+	blob.AddCommand(commands.CreateCommandBlobGet())
+	blob.AddCommand(commands.CreateCommandBlobList())
+	blob.AddCommand(commands.CreateCommandBlobReflect())
+	blob.AddCommand(commands.CreateCommandBlobReflectAll())
 
 	return blob
 }

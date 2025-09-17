@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/sync"
 import "github.com/spf13/cobra"
 
 func CreateCommandSync() *cobra.Command {
@@ -10,6 +11,9 @@ func CreateCommandSync() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	sync.AddCommand(commands.CreateCommandSyncApply())
+	sync.AddCommand(commands.CreateCommandSyncHash())
 
 	return sync
 }

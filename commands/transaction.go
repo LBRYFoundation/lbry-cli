@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/transaction"
 import "github.com/spf13/cobra"
 
 func CreateCommandTransaction() *cobra.Command {
@@ -10,6 +11,9 @@ func CreateCommandTransaction() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	transaction.AddCommand(commands.CreateCommandTransactionList())
+	transaction.AddCommand(commands.CreateCommandTransactionShow())
 
 	return transaction
 }

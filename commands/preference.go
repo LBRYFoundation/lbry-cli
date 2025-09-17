@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/preference"
 import "github.com/spf13/cobra"
 
 func CreateCommandPreference() *cobra.Command {
@@ -10,6 +11,9 @@ func CreateCommandPreference() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	preference.AddCommand(commands.CreateCommandPreferenceGet())
+	preference.AddCommand(commands.CreateCommandPreferenceSet())
 
 	return preference
 }

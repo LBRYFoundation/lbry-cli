@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/collection"
 import "github.com/spf13/cobra"
 
 func CreateCommandCollection() *cobra.Command {
@@ -10,6 +11,12 @@ func CreateCommandCollection() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	collection.AddCommand(commands.CreateCommandCollectionAbandon())
+	collection.AddCommand(commands.CreateCommandCollectionCreate())
+	collection.AddCommand(commands.CreateCommandCollectionList())
+	collection.AddCommand(commands.CreateCommandCollectionResolve())
+	collection.AddCommand(commands.CreateCommandCollectionUpdate())
 
 	return collection
 }

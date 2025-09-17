@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/txo"
 import "github.com/spf13/cobra"
 
 func CreateCommandTXO() *cobra.Command {
@@ -10,6 +11,11 @@ func CreateCommandTXO() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	txo.AddCommand(commands.CreateCommandTXOList())
+	txo.AddCommand(commands.CreateCommandTXOPlot())
+	txo.AddCommand(commands.CreateCommandTXOSpend())
+	txo.AddCommand(commands.CreateCommandTXOSum())
 
 	return txo
 }

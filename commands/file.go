@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/file"
 import "github.com/spf13/cobra"
 
 func CreateCommandFile() *cobra.Command {
@@ -10,6 +11,12 @@ func CreateCommandFile() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	file.AddCommand(commands.CreateCommandFileDelete())
+	file.AddCommand(commands.CreateCommandFileList())
+	file.AddCommand(commands.CreateCommandFileReflect())
+	file.AddCommand(commands.CreateCommandFileSave())
+	file.AddCommand(commands.CreateCommandFileSetStatus())
 
 	return file
 }

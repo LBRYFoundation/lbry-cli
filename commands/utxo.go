@@ -1,5 +1,6 @@
 package commands
 
+import commands "lbry/cli/commands/utxo"
 import "github.com/spf13/cobra"
 
 func CreateCommandUTXO() *cobra.Command {
@@ -10,6 +11,9 @@ func CreateCommandUTXO() *cobra.Command {
 			cmd.Help()
 		},
 	}
+
+	utxo.AddCommand(commands.CreateCommandUTXOList())
+	utxo.AddCommand(commands.CreateCommandUTXORelease())
 
 	return utxo
 }
