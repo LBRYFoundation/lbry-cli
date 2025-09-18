@@ -10,7 +10,7 @@ import "github.com/ybbus/jsonrpc/v3"
 func ExecuteRPCCommand(method string, params ...interface{}) {
 	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
 
-	request := jsonrpc.NewRequestWithID(rand.Int(), method, params)
+	request := jsonrpc.NewRequestWithID(rand.Int(), method, params...)
 	response, err := rpcClient.CallRaw(context.Background(), request)
 
 	if err != nil {
