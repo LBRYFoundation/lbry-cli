@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/settings"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/settings"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandSettings() *cobra.Command {
 	settings := &cobra.Command{

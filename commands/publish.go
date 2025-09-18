@@ -1,7 +1,10 @@
 package commands
 
-import "lbry/cli/rpc"
-import "github.com/spf13/cobra"
+import (
+	"lbry/cli/rpc"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandPublish() *cobra.Command {
 	publish := &cobra.Command{

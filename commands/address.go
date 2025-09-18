@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/address"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/address"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandAddress() *cobra.Command {
 	address := &cobra.Command{

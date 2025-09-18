@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/claim"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/claim"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandClaim() *cobra.Command {
 	claim := &cobra.Command{

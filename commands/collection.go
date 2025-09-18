@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/collection"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/collection"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandCollection() *cobra.Command {
 	collection := &cobra.Command{

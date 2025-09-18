@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/sync"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/sync"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandSync() *cobra.Command {
 	sync := &cobra.Command{

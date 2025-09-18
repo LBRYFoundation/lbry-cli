@@ -1,10 +1,13 @@
 package commands
 
-import "context"
-import "encoding/json"
-import "fmt"
-import "github.com/spf13/cobra"
-import "github.com/ybbus/jsonrpc/v3"
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+
+	"github.com/spf13/cobra"
+	"github.com/ybbus/jsonrpc/v3"
+)
 
 func CreateCommandStop() *cobra.Command {
 	stop := &cobra.Command{

@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/account"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/account"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandAccount() *cobra.Command {
 	account := &cobra.Command{

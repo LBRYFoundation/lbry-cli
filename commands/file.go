@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/file"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/file"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandFile() *cobra.Command {
 	file := &cobra.Command{

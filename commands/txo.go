@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/txo"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/txo"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandTXO() *cobra.Command {
 	txo := &cobra.Command{

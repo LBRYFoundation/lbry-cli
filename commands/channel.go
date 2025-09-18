@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/channel"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/channel"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandChannel() *cobra.Command {
 	channel := &cobra.Command{

@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/stream"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/stream"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandStream() *cobra.Command {
 	stream := &cobra.Command{

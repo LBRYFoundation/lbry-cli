@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/wallet"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/wallet"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandWallet() *cobra.Command {
 	wallet := &cobra.Command{

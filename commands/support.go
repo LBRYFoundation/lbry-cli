@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/support"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/support"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandSupport() *cobra.Command {
 	support := &cobra.Command{

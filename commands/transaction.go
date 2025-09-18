@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/transaction"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/transaction"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandTransaction() *cobra.Command {
 	transaction := &cobra.Command{

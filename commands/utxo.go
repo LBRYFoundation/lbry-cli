@@ -1,7 +1,10 @@
 package commands
 
-import commands "lbry/cli/commands/utxo"
-import "github.com/spf13/cobra"
+import (
+	commands "lbry/cli/commands/utxo"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandUTXO() *cobra.Command {
 	utxo := &cobra.Command{

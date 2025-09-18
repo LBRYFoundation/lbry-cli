@@ -1,11 +1,14 @@
 package rpc
 
-import "context"
-import "encoding/json"
-import "fmt"
-import "math/rand/v2"
-import "os"
-import "github.com/ybbus/jsonrpc/v3"
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"math/rand/v2"
+	"os"
+
+	"github.com/ybbus/jsonrpc/v3"
+)
 
 func ExecuteRPCCommand(method string, params ...interface{}) {
 	rpcClient := jsonrpc.NewClient("http://localhost:5279/")

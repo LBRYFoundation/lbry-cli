@@ -1,8 +1,12 @@
 package main
 
-import "lbry/cli/commands"
-import "github.com/spf13/cobra"
-import cc "github.com/ivanpirog/coloredcobra"
+import (
+	"lbry/cli/commands"
+
+	"github.com/spf13/cobra"
+
+	cc "github.com/ivanpirog/coloredcobra"
+)
 
 func CreateCommand() *cobra.Command {
 	rootCmd := &cobra.Command{
