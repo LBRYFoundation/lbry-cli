@@ -14,7 +14,7 @@ func CreateCommandGet() *cobra.Command {
 		Run:   HandleCommandGet,
 	}
 
-	get.Flags().String("uri", "", "(str) uri of the content to download")
+	//get.Flags().String("uri", "", "(str) uri of the content to download")
 	get.Flags().String("file_name", "", "(str) specified name for the downloaded file, overrides the stream file name")
 	get.Flags().String("download_directory", "", "(str) full path to the directory to download into")
 	get.Flags().Int("timeout", -1, "(int) download timeout in number of seconds")
@@ -25,7 +25,9 @@ func CreateCommandGet() *cobra.Command {
 }
 
 func HandleCommandGet(cmd *cobra.Command, args []string) {
-	uri, _ := cmd.Flags().GetString("uri")
+	uri := ""
+	//uri, _ := cmd.Flags().GetString("uri")
+
 	file_name, _ := cmd.Flags().GetString("file_name")
 	download_directory, _ := cmd.Flags().GetString("download_directory")
 	timeout, _ := cmd.Flags().GetInt("timeout")
@@ -43,12 +45,13 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 		download_directory = args[2]
 	}
 	if len(args) >= 4 {
-	    val, _ := strconv.Atoi(args[3])
+		val, _ := strconv.Atoi(args[3])
 		timeout = val
 	}
 
 	if uri == "" {
 		cmd.Help()
+		return
 	}
 
 	params := map[string]any{
@@ -69,7 +72,6 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 	if wallet_id != "" {
 		params["wallet_id"] = wallet_id
 	}
-	fmt.Println(params)
 
 	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
 	resp, err := rpcClient.Call(context.Background(), "get", params)
