@@ -7,8 +7,16 @@ import (
 	"math/rand/v2"
 	"os"
 
+	"github.com/spf13/pflag"
 	"github.com/ybbus/jsonrpc/v3"
 )
+
+func AddParameter[T any](parameters map[string]any, f *pflag.FlagSet, get func(name string) (T, error), name string) {
+	if f.Changed(name) {
+		value, _ := get(name)
+		parameters[name] = value
+	}
+}
 
 func ExecuteRPCCommand(method string, params ...interface{}) {
 	rpcClient := jsonrpc.NewClient("http://localhost:5279/")

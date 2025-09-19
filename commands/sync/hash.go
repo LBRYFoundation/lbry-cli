@@ -19,21 +19,22 @@ func CreateCommandSyncHash() *cobra.Command {
 }
 
 func HandleCommandSyncHash(cmd *cobra.Command, args []string) {
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
+	params := map[string]any{}
 
-	// Check for arguments
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+
+	//Check for arguments
 	if len(args) >= 1 {
-		wallet_id = args[0]
+		_, exists := params["wallet_id"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["wallet_id"] = args[0]
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
 	}
 
 	rpc.ExecuteRPCCommand("sync_hash", params)
