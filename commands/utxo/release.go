@@ -39,5 +39,5 @@ func HandleCommandUTXORelease(cmd *cobra.Command, args []string) {
 		params["wallet_id"] = wallet_id
 	}
 
-	rpc.ExecuteRPCCommand("utxo_list", params)
+	rpc.ExecuteRPCCommand("utxo_release", params)
 }

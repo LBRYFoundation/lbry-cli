@@ -17,6 +17,7 @@ func CreateCommandFFmpegFind() *cobra.Command {
 }
 
 func HandleCommandFFmpegFind(cmd *cobra.Command, args []string) {
+	// Check for arguments
 	if len(args) != 0 {
 		cmd.Help()
 		return
