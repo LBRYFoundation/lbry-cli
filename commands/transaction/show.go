@@ -25,6 +25,10 @@ func HandleCommandTransactionShow(cmd *cobra.Command, args []string) {
 	if len(args) >= 1 {
 		txid = args[0]
 	}
+	if len(args) > 1 {
+		cmd.Help()
+		return
+	}
 
 	if txid == "" {
 		cmd.Help()

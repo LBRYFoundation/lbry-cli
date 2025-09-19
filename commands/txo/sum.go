@@ -52,7 +52,7 @@ func HandleCommandTXOSum(cmd *cobra.Command, args []string) {
 	wallet_id, _ := cmd.Flags().GetString("wallet_id")
 
 	// Check for arguments
-	if len(args) != 0 {
+	if len(args) > 0 {
 		cmd.Help()
 		return
 	}

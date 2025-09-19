@@ -27,6 +27,10 @@ func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
 		val, _ := strconv.Atoi(args[0])
 		items = val
 	}
+	if len(args) > 1 {
+		cmd.Help()
+		return
+	}
 
 	// Create parameter map
 	params := map[string]any{}

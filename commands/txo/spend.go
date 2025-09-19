@@ -50,7 +50,7 @@ func HandleCommandTXOSpend(cmd *cobra.Command, args []string) {
 	include_full_tx, _ := cmd.Flags().GetBool("include_full_tx")
 
 	// Check for arguments
-	if len(args) != 0 {
+	if len(args) > 0 {
 		cmd.Help()
 		return
 	}

@@ -33,6 +33,10 @@ func HandleCommandSyncApply(cmd *cobra.Command, args []string) {
 	if len(args) >= 1 {
 		password = args[0]
 	}
+	if len(args) > 1 {
+		cmd.Help()
+		return
+	}
 
 	if password == "" {
 		cmd.Help()

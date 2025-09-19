@@ -18,7 +18,7 @@ func CreateCommandStatus() *cobra.Command {
 
 func HandleCommandStatus(cmd *cobra.Command, args []string) {
 	// Check for arguments
-	if len(args) != 0 {
+	if len(args) > 0 {
 		cmd.Help()
 		return
 	}

@@ -39,6 +39,7 @@ func HandleCommandResolve(cmd *cobra.Command, args []string) {
 
 	// Check for arguments
 	if len(args) >= 1 {
+		// Variable arguments
 		urls = args
 	}
 

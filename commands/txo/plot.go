@@ -60,7 +60,7 @@ func HandleCommandTXOPlot(cmd *cobra.Command, args []string) {
 	end_day, _ := cmd.Flags().GetString("end_day")
 
 	// Check for arguments
-	if len(args) != 0 {
+	if len(args) > 0 {
 		cmd.Help()
 		return
 	}

@@ -89,6 +89,10 @@ func HandleCommandPublish(cmd *cobra.Command, args []string) {
 	if len(args) >= 1 {
 		name = args[0]
 	}
+	if len(args) > 1 {
+		cmd.Help()
+		return
+	}
 
 	if name == "" {
 		cmd.Help()

@@ -48,6 +48,10 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 		val, _ := strconv.Atoi(args[3])
 		timeout = val
 	}
+	if len(args) > 4 {
+		cmd.Help()
+		return
+	}
 
 	if uri == "" {
 		cmd.Help()

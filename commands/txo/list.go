@@ -64,7 +64,7 @@ func HandleCommandTXOList(cmd *cobra.Command, args []string) {
 	no_totals, _ := cmd.Flags().GetBool("no_totals")
 
 	// Check for arguments
-	if len(args) != 0 {
+	if len(args) > 0 {
 		cmd.Help()
 		return
 	}
