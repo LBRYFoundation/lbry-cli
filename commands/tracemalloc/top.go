@@ -6,10 +6,26 @@ func CreateCommandTraceMAllocTop() *cobra.Command {
 	tracemalloc_top := &cobra.Command{
 		Use:   "top",
 		Short: "Show most common objects, the place that created them and their size.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
+		Run:   HandleCommandTraceMAllocTop,
 	}
 
+	get.Flags().Int("items", 0, "(int) maximum items to return, from the most common")
+
 	return tracemalloc_top
+}
+
+func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
+	items, _ := cmd.Flags().GetInt("items")
+
+	// Check for arguments
+	if len(args) >= 1 {
+		items = args[0]
+	}
+
+	params := map[string]any{}
+	if items != 0 {
+		params["items"] = items
+	}
+
+	rpc.ExecuteRPCCommand("tracemalloc_top", params)
 }

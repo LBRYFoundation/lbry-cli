@@ -76,12 +76,5 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 		params["wallet_id"] = wallet_id
 	}
 
-	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
-	resp, err := rpcClient.Call(context.Background(), "get", params)
-	if err != nil {
-		fmt.Println("Could not connect to daemon. Are you sure it's running?")
-		return
-	}
-	result, _ := json.MarshalIndent(resp.Result, "", "\t")
-	fmt.Println(string(result))
+	rpc.ExecuteRPCCommand("get", params)
 }

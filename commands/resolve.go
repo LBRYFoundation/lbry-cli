@@ -75,12 +75,5 @@ func HandleCommandResolve(cmd *cobra.Command, args []string) {
 		params["include_received_tips"] = include_received_tips
 	}
 
-	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
-	resp, err := rpcClient.Call(context.Background(), "resolve", params)
-	if err != nil {
-		fmt.Println("Could not connect to daemon. Are you sure it's running?")
-		return
-	}
-	result, _ := json.MarshalIndent(resp.Result, "", "\t")
-	fmt.Println(string(result))
+	rpc.ExecuteRPCCommand("resolve", params)
 }

@@ -24,12 +24,6 @@ func HandleCommandStop(cmd *cobra.Command, args []string) {
 		cmd.Help()
 		return
 	}
-	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
-	resp, err := rpcClient.Call(context.Background(), "stop")
-	if err != nil {
-		fmt.Println("Could not connect to daemon. Are you sure it's running?")
-		return
-	}
-	result, _ := json.MarshalIndent(resp.Result, "", "\t")
-	fmt.Println(string(result))
+
+	rpc.ExecuteRPCCommand("stop")
 }

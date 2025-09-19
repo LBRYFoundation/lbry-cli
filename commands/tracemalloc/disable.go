@@ -6,10 +6,17 @@ func CreateCommandTraceMAllocDisable() *cobra.Command {
 	tracemalloc_disable := &cobra.Command{
 		Use:   "disable",
 		Short: "Disable tracemalloc memory tracing",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
+		Run:   HandleCommandTraceMAllocDisable,
 	}
 
 	return tracemalloc_disable
+}
+
+func HandleCommandTraceMAllocDisable(cmd *cobra.Command, args []string) {
+	if len(args) != 0 {
+		cmd.Help()
+		return
+	}
+
+	rpc.ExecuteRPCCommand("tracemalloc_disable")
 }
