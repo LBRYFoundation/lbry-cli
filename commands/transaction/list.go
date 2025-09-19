@@ -32,6 +32,7 @@ func HandleCommandTransactionList(cmd *cobra.Command, args []string) {
 		account_id = args[0]
 	}
 
+	// Create parameter map
 	params := map[string]any{}
 	if account_id != "" {
 		params["account_id"] = account_id

@@ -55,6 +55,7 @@ func HandleCommandTXOSpend(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Create parameter map
 	params := map[string]any{}
 	if len(_type) > 0 {
 		params["type"] = _type

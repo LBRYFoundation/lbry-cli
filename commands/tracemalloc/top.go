@@ -28,6 +28,7 @@ func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
 		items = val
 	}
 
+	// Create parameter map
 	params := map[string]any{}
 	if items != -1 {
 		params["items"] = items

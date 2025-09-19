@@ -39,6 +39,7 @@ func HandleCommandSyncApply(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Create parameter map
 	params := map[string]any{
 		"password": password,
 	}

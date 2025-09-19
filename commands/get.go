@@ -54,6 +54,7 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Create parameter map
 	params := map[string]any{
 		"uri": uri,
 	}

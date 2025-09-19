@@ -26,6 +26,7 @@ func HandleCommandSyncHash(cmd *cobra.Command, args []string) {
 		wallet_id = args[0]
 	}
 
+	// Create parameter map
 	params := map[string]any{}
 	if wallet_id != "" {
 		params["wallet_id"] = wallet_id
