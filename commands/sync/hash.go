@@ -21,6 +21,7 @@ func CreateCommandSyncHash() *cobra.Command {
 func HandleCommandSyncHash(cmd *cobra.Command, args []string) {
 	wallet_id, _ := cmd.Flags().GetString("wallet_id")
 
+	// Check for arguments
 	if len(args) >= 1 {
 		wallet_id = args[0]
 	}
