@@ -13,12 +13,12 @@ func CreateCommandTXOSum() *cobra.Command {
 		Run:   HandleCommandTXOSum,
 	}
 
-	txo_sum.Flags().StringArray("type", []string{}, "(str or list) claim type: stream, channel, support, purchase, collection, repost, other")
-	txo_sum.Flags().StringArray("txid", []string{}, "(str or list) transaction id of outputs")
-	txo_sum.Flags().StringArray("claim_id", []string{}, "(str or list) claim id")
-	txo_sum.Flags().StringArray("name", []string{}, "(str or list) claim name")
-	txo_sum.Flags().StringArray("channel_id", []string{}, "(str or list) claims in this channel")
-	txo_sum.Flags().StringArray("not_channel_id", []string{}, "(str or list) claims not in this channel")
+	txo_sum.Flags().StringArray("type", nil, "(str or list) claim type: stream, channel, support, purchase, collection, repost, other")
+	txo_sum.Flags().StringArray("txid", nil, "(str or list) transaction id of outputs")
+	txo_sum.Flags().StringArray("claim_id", nil, "(str or list) claim id")
+	txo_sum.Flags().StringArray("name", nil, "(str or list) claim name")
+	txo_sum.Flags().StringArray("channel_id", nil, "(str or list) claims in this channel")
+	txo_sum.Flags().StringArray("not_channel_id", nil, "(str or list) claims not in this channel")
 	txo_sum.Flags().Bool("is_spent", false, "(bool) only show spent txos")
 	txo_sum.Flags().Bool("is_not_spent", false, "(bool) only show not spent txos")
 	txo_sum.Flags().Bool("is_my_input_or_output", false, "(bool) txos which have your inputs or your outputs, if using this flag the other related flags are ignored (--is_my_output, --is_my_input, etc)")

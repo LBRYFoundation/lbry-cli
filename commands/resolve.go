@@ -13,7 +13,7 @@ func CreateCommandResolve() *cobra.Command {
 		Run:   HandleCommandResolve,
 	}
 
-	//resolve.Flags().StringArray("urls", []string{}, "(str, list) one or more urls to resolve")
+	//resolve.Flags().StringArray("urls", nil, "(str, list) one or more urls to resolve")
 	resolve.Flags().String("wallet_id", "", "(str) wallet to check for claim purchase receipts")
 	resolve.Flags().String("new_sdk_server", "", "(str) URL of the new SDK server (EXPERIMENTAL)")
 	resolve.Flags().Bool("include_purchase_receipt", false, "(bool) lookup and include a receipt if this wallet has purchased the claim being resolved")

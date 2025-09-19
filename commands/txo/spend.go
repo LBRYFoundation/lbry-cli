@@ -13,12 +13,12 @@ func CreateCommandTXOSpend() *cobra.Command {
 		Run:   HandleCommandTXOSpend,
 	}
 
-	txo_spend.Flags().StringArray("type", []string{}, "(str or list) claim type: stream, channel, support, purchase, collection, repost, other")
-	txo_spend.Flags().StringArray("txid", []string{}, "(str or list) transaction id of outputs")
-	txo_spend.Flags().StringArray("claim_id", []string{}, "(str or list) claim id")
-	txo_spend.Flags().StringArray("channel_id", []string{}, "(str or list) claims in this channel")
-	txo_spend.Flags().StringArray("not_channel_id", []string{}, "(str or list) claims not in this channel")
-	txo_spend.Flags().StringArray("name", []string{}, "(str or list) claim name")
+	txo_spend.Flags().StringArray("type", nil, "(str or list) claim type: stream, channel, support, purchase, collection, repost, other")
+	txo_spend.Flags().StringArray("txid", nil, "(str or list) transaction id of outputs")
+	txo_spend.Flags().StringArray("claim_id", nil, "(str or list) claim id")
+	txo_spend.Flags().StringArray("channel_id", nil, "(str or list) claims in this channel")
+	txo_spend.Flags().StringArray("not_channel_id", nil, "(str or list) claims not in this channel")
+	txo_spend.Flags().StringArray("name", nil, "(str or list) claim name")
 	txo_spend.Flags().Bool("is_my_input", false, "(bool) show outputs created by you")
 	txo_spend.Flags().Bool("is_not_my_input", false, "(bool) show outputs not created by you")
 	txo_spend.Flags().Bool("exclude_internal_transfers", false, "(bool) excludes any outputs that are exactly this combination: \"--is_my_input --is_my_output --type=other\" this allows to exclude \"change\" payments, this flag can be used in combination with any of the other flags")
