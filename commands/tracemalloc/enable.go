@@ -1,6 +1,10 @@
 package commands_tracemalloc
 
-import "github.com/spf13/cobra"
+import (
+	"lbry/cli/rpc"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandTraceMAllocEnable() *cobra.Command {
 	tracemalloc_enable := &cobra.Command{

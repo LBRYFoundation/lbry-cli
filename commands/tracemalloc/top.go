@@ -1,6 +1,11 @@
 package commands_tracemalloc
 
-import "github.com/spf13/cobra"
+import (
+	"lbry/cli/rpc"
+	"strconv"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandTraceMAllocTop() *cobra.Command {
 	tracemalloc_top := &cobra.Command{
@@ -19,7 +24,8 @@ func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
 
 	// Check for arguments
 	if len(args) >= 1 {
-		items = args[0]
+		val, _ := strconv.Atoi(args[0])
+		items = val
 	}
 
 	params := map[string]any{}

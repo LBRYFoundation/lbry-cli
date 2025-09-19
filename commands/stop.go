@@ -1,12 +1,9 @@
 package commands
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
+	"lbry/cli/rpc"
 
 	"github.com/spf13/cobra"
-	"github.com/ybbus/jsonrpc/v3"
 )
 
 func CreateCommandStop() *cobra.Command {
