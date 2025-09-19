@@ -1,15 +1,34 @@
 package commands_sync
 
-import "github.com/spf13/cobra"
+import (
+	"lbry/cli/rpc"
+
+	"github.com/spf13/cobra"
+)
 
 func CreateCommandSyncHash() *cobra.Command {
 	sync_hash := &cobra.Command{
 		Use:   "hash",
 		Short: "Deterministic hash of the wallet.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
+		Run:   HandleCommandSyncHash,
 	}
 
+	sync_hash.Flags().String("wallet_id", "", "(str) wallet for which to generate hash")
+
 	return sync_hash
+}
+
+func HandleCommandSyncHash(cmd *cobra.Command, args []string) {
+	wallet_id, _ := cmd.Flags().GetString("wallet_id")
+
+	if len(args) >= 1 {
+		wallet_id = args[0]
+	}
+
+	params := map[string]any{}
+	if wallet_id != "" {
+		params["wallet_id"] = wallet_id
+	}
+
+	rpc.ExecuteRPCCommand("sync_hash", params)
 }

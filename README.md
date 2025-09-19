@@ -17,7 +17,7 @@ Or for Windows:
 go build -o lbry-cli.exe
 ```
 
-### Run
+## Run
 
 ```shell
 lbry-cli version
