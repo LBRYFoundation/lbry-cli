@@ -14,7 +14,7 @@ func CreateCommandTraceMAllocTop() *cobra.Command {
 		Run:   HandleCommandTraceMAllocTop,
 	}
 
-	top.Flags().Int("items", 0, "(int) maximum items to return, from the most common")
+	tracemalloc_top.Flags().Int("items", -1, "(int) maximum items to return, from the most common")
 
 	return tracemalloc_top
 }
@@ -29,7 +29,7 @@ func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
 	}
 
 	params := map[string]any{}
-	if items != 0 {
+	if items != -1 {
 		params["items"] = items
 	}
 
