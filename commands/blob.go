@@ -10,9 +10,6 @@ func CreateCommandBlob() *cobra.Command {
 	blob := &cobra.Command{
 		Use:   "blob",
 		Short: "Blob management.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
 	}
 
 	blob.AddCommand(commands.CreateCommandBlobAnnounce())

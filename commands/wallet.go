@@ -10,9 +10,6 @@ func CreateCommandWallet() *cobra.Command {
 	wallet := &cobra.Command{
 		Use:   "wallet",
 		Short: "Create, modify and inspect wallets.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
 	}
 
 	wallet.AddCommand(commands.CreateCommandWalletAdd())

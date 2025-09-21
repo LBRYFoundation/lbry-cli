@@ -10,9 +10,6 @@ func CreateCommandStream() *cobra.Command {
 	stream := &cobra.Command{
 		Use:   "stream",
 		Short: "Create, update, abandon, list and inspect your stream claims.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
 	}
 
 	stream.AddCommand(commands.CreateCommandStreamAbandon())

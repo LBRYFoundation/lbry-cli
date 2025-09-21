@@ -10,7 +10,6 @@ func CreateCommandTraceMAlloc() *cobra.Command {
 	tracemalloc := &cobra.Command{
 		Use:   "tracemalloc",
 		Short: "Controls and queries tracemalloc memory tracing tools for troubleshooting.",
-		Run:   HandleCommandTraceMAlloc,
 	}
 
 	tracemalloc.AddCommand(commands.CreateCommandTraceMAllocDisable())
@@ -18,8 +17,4 @@ func CreateCommandTraceMAlloc() *cobra.Command {
 	tracemalloc.AddCommand(commands.CreateCommandTraceMAllocTop())
 
 	return tracemalloc
-}
-
-func HandleCommandTraceMAlloc(cmd *cobra.Command, args []string) {
-	cmd.Help()
 }

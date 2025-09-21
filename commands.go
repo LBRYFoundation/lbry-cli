@@ -12,9 +12,6 @@ func CreateCommand() *cobra.Command {
 	rootCmd := &cobra.Command{
 		Use:   "lbry-cli",
 		Short: "An interface to the LBRY Network.",
-		Run: func(cmd *cobra.Command, args []string) {
-			cmd.Help()
-		},
 	}
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
