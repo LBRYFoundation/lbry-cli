@@ -57,8 +57,8 @@ func HandleCommandPreferenceSet(cmd *cobra.Command, args []string) {
 		cmd.Help()
 		return
 	}
-	_, existsKey := params["value"]
-	if !existsKey {
+	_, existsValue := params["value"]
+	if !existsValue {
 		cmd.Help()
 		return
 	}
