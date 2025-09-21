@@ -73,6 +73,7 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Check for required parameters
 	_, exists := params["uri"]
 	if !exists {
 		cmd.Help()

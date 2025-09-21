@@ -43,5 +43,12 @@ func HandleCommandSyncApply(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Check for required parameters
+	_, exists := params["password"]
+	if !exists {
+		cmd.Help()
+		return
+	}
+
 	rpc.ExecuteRPCCommand("sync_apply", params)
 }

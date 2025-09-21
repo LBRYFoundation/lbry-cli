@@ -37,6 +37,7 @@ func HandleCommandTransactionShow(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Check for required parameters
 	_, exists := params["txid"]
 	if !exists {
 		cmd.Help()

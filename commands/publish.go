@@ -101,6 +101,7 @@ func HandleCommandPublish(cmd *cobra.Command, args []string) {
 		return
 	}
 
+	// Check for required parameters
 	_, exists := params["name"]
 	if !exists {
 		cmd.Help()

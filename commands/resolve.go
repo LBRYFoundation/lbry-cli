@@ -48,6 +48,7 @@ func HandleCommandResolve(cmd *cobra.Command, args []string) {
 		params["urls"] = args
 	}
 
+	// Check for required parameters
 	_, exists := params["urls"]
 	if !exists {
 		cmd.Help()
