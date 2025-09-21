@@ -20,22 +20,23 @@ func CreateCommandTraceMAllocTop() *cobra.Command {
 }
 
 func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
-	items, _ := cmd.Flags().GetInt("items")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "items")
 
 	// Check for arguments
 	if len(args) >= 1 {
+		_, exists := params["password"]
+		if exists {
+			cmd.Help()
+			return
+		}
 		val, _ := strconv.Atoi(args[0])
-		items = val
+		params["password"] = val
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if items != -1 {
-		params["items"] = items
 	}
 
 	rpc.ExecuteRPCCommand("tracemalloc_top", params)

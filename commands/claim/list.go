@@ -34,78 +34,29 @@ func CreateCommandClaimList() *cobra.Command {
 }
 
 func HandleCommandClaimList(cmd *cobra.Command, args []string) {
-	claim_type, _ := cmd.Flags().GetStringArray("claim_type")
-	claim_id, _ := cmd.Flags().GetStringArray("claim_id")
-	channel_id, _ := cmd.Flags().GetStringArray("channel_id")
-	name, _ := cmd.Flags().GetStringArray("name")
-	is_spent, _ := cmd.Flags().GetBool("is_spent")
-	reposted_claim_id, _ := cmd.Flags().GetStringArray("reposted_claim_id")
-	account_id, _ := cmd.Flags().GetString("account_id")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
-	has_source, _ := cmd.Flags().GetBool("has_source")
-	has_no_source, _ := cmd.Flags().GetBool("has_no_source")
-	page, _ := cmd.Flags().GetInt("page")
-	page_size, _ := cmd.Flags().GetInt("page_size")
-	resolve, _ := cmd.Flags().GetBool("resolve")
-	order_by, _ := cmd.Flags().GetString("order_by")
-	no_totals, _ := cmd.Flags().GetBool("no_totals")
-	include_received_tips, _ := cmd.Flags().GetBool("include_received_tips")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "claim_type")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "claim_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "channel_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_spent")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "reposted_claim_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "account_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "has_source")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "has_no_source")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "page")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "page_size")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "resolve")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "order_by")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "no_totals")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_received_tips")
 
 	// Check for arguments
 	if len(args) > 0 {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if len(claim_type) > 0 {
-		params["claim_type"] = claim_type
-	}
-	if len(claim_id) > 0 {
-		params["claim_id"] = claim_id
-	}
-	if len(channel_id) > 0 {
-		params["channel_id"] = channel_id
-	}
-	if len(name) > 0 {
-		params["name"] = name
-	}
-	if is_spent {
-		params["is_spent"] = is_spent
-	}
-	if len(reposted_claim_id) > 0 {
-		params["reposted_claim_id"] = reposted_claim_id
-	}
-	if account_id != "" {
-		params["account_id"] = account_id
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
-	}
-	if has_source {
-		params["has_source"] = has_source
-	}
-	if has_no_source {
-		params["has_no_source"] = has_no_source
-	}
-	if page != -1 {
-		params["page"] = page
-	}
-	if page_size != -1 {
-		params["page_size"] = page_size
-	}
-	if resolve {
-		params["resolve"] = resolve
-	}
-	if order_by != "" {
-		params["order_by"] = order_by
-	}
-	if no_totals {
-		params["no_totals"] = no_totals
-	}
-	if include_received_tips {
-		params["include_received_tips"] = include_received_tips
 	}
 
 	rpc.ExecuteRPCCommand("claim_list", params)

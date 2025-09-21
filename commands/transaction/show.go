@@ -19,26 +19,28 @@ func CreateCommandTransactionShow() *cobra.Command {
 }
 
 func HandleCommandTransactionShow(cmd *cobra.Command, args []string) {
-	txid, _ := cmd.Flags().GetString("txid")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "txid")
 
 	// Check for arguments
 	if len(args) >= 1 {
-		txid = args[0]
+		_, exists := params["txid"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["txid"] = args[0]
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
 	}
 
-	if txid == "" {
+	_, exists := params["txid"]
+	if !exists {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if txid != "" {
-		params["txid"] = txid
 	}
 
 	rpc.ExecuteRPCCommand("transaction_show", params)

@@ -20,22 +20,15 @@ func CreateCommandAddressUnused() *cobra.Command {
 }
 
 func HandleCommandAddressUnused(cmd *cobra.Command, args []string) {
-	account_id, _ := cmd.Flags().GetString("account_id")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "account_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
 
 	// Check for arguments
 	if len(args) > 0 {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if account_id != "" {
-		params["account_id"] = account_id
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
 	}
 
 	rpc.ExecuteRPCCommand("address_unused", params)

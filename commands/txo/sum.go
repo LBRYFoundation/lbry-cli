@@ -34,78 +34,29 @@ func CreateCommandTXOSum() *cobra.Command {
 }
 
 func HandleCommandTXOSum(cmd *cobra.Command, args []string) {
-	_type, _ := cmd.Flags().GetStringArray("type")
-	txid, _ := cmd.Flags().GetStringArray("txid")
-	claim_id, _ := cmd.Flags().GetStringArray("claim_id")
-	name, _ := cmd.Flags().GetStringArray("name")
-	channel_id, _ := cmd.Flags().GetStringArray("channel_id")
-	not_channel_id, _ := cmd.Flags().GetStringArray("not_channel_id")
-	is_spent, _ := cmd.Flags().GetBool("is_spent")
-	is_not_spent, _ := cmd.Flags().GetBool("is_not_spent")
-	is_my_input_or_output, _ := cmd.Flags().GetBool("is_my_input_or_output")
-	is_my_output, _ := cmd.Flags().GetBool("is_my_output")
-	is_not_my_output, _ := cmd.Flags().GetBool("is_not_my_output")
-	is_my_input, _ := cmd.Flags().GetBool("is_my_input")
-	is_not_my_input, _ := cmd.Flags().GetBool("is_not_my_input")
-	exclude_internal_transfers, _ := cmd.Flags().GetBool("exclude_internal_transfers")
-	account_id, _ := cmd.Flags().GetString("account_id")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "type")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "txid")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "claim_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "channel_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "not_channel_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_spent")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_no_spent")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_my_input_or_output")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_my_output")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_not_my_output")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_my_input")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_not_my_input")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "exclude_internal_transfers")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "account_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
 
 	// Check for arguments
 	if len(args) > 0 {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if len(_type) > 0 {
-		params["type"] = _type
-	}
-	if len(txid) > 0 {
-		params["txid"] = txid
-	}
-	if len(claim_id) > 0 {
-		params["claim_id"] = claim_id
-	}
-	if len(name) > 0 {
-		params["name"] = name
-	}
-	if len(channel_id) > 0 {
-		params["channel_id"] = channel_id
-	}
-	if len(not_channel_id) > 0 {
-		params["not_channel_id"] = not_channel_id
-	}
-	if is_spent {
-		params["is_spent"] = is_spent
-	}
-	if is_not_spent {
-		params["is_not_spent"] = is_not_spent
-	}
-	if is_my_input_or_output {
-		params["is_my_input_or_output"] = is_my_input_or_output
-	}
-	if is_my_output {
-		params["is_my_output"] = is_my_output
-	}
-	if is_not_my_output {
-		params["is_not_my_output"] = is_not_my_output
-	}
-	if is_my_input {
-		params["is_my_input"] = is_my_input
-	}
-	if is_not_my_input {
-		params["is_not_my_input"] = is_not_my_input
-	}
-	if exclude_internal_transfers {
-		params["exclude_internal_transfers"] = exclude_internal_transfers
-	}
-	if account_id != "" {
-		params["account_id"] = account_id
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
 	}
 
 	rpc.ExecuteRPCCommand("txo_sum", params)

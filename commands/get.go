@@ -25,57 +25,58 @@ func CreateCommandGet() *cobra.Command {
 }
 
 func HandleCommandGet(cmd *cobra.Command, args []string) {
-	uri := ""
-	//uri, _ := cmd.Flags().GetString("uri")
-
-	file_name, _ := cmd.Flags().GetString("file_name")
-	download_directory, _ := cmd.Flags().GetString("download_directory")
-	timeout, _ := cmd.Flags().GetInt("timeout")
-	save_file, _ := cmd.Flags().GetBool("save_file")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
+	// Create parameter map
+	params := map[string]any{}
+	//rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "uri")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "file_name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "download_directory")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "timeout")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "save_file")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
 
 	// Check for arguments
 	if len(args) >= 1 {
-		uri = args[0]
+		_, exists := params["uri"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["uri"] = args[0]
 	}
 	if len(args) >= 2 {
-		file_name = args[1]
+		_, exists := params["file_name"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["file_name"] = args[1]
 	}
 	if len(args) >= 3 {
-		download_directory = args[2]
+		_, exists := params["download_directory"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["download_directory"] = args[2]
 	}
 	if len(args) >= 4 {
+		_, exists := params["timeout"]
+		if exists {
+			cmd.Help()
+			return
+		}
 		val, _ := strconv.Atoi(args[3])
-		timeout = val
+		params["timeout"] = val
 	}
 	if len(args) > 4 {
 		cmd.Help()
 		return
 	}
 
-	if uri == "" {
+	_, exists := params["uri"]
+	if !exists {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{
-		"uri": uri,
-	}
-	if file_name != "" {
-		params["file_name"] = file_name
-	}
-	if download_directory != "" {
-		params["download_directory"] = download_directory
-	}
-	if timeout != -1 {
-		params["timeout"] = timeout
-	}
-	if save_file {
-		params["save_file"] = save_file
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
 	}
 
 	rpc.ExecuteRPCCommand("get", params)

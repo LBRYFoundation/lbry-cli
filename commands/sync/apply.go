@@ -22,39 +22,25 @@ func CreateCommandSyncApply() *cobra.Command {
 }
 
 func HandleCommandSyncApply(cmd *cobra.Command, args []string) {
-	password := ""
-	//password, _ := cmd.Flags().GetString("password")
-
-	data, _ := cmd.Flags().GetString("data")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
-	blocking, _ := cmd.Flags().GetBool("blocking")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "password")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "data")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "blocking")
 
 	// Check for arguments
 	if len(args) >= 1 {
-		password = args[0]
+		_, exists := params["password"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["password"] = args[0]
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
-	}
-
-	if password == "" {
-		cmd.Help()
-		return
-	}
-
-	// Create parameter map
-	params := map[string]any{
-		"password": password,
-	}
-	if data != "" {
-		params["data"] = data
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
-	}
-	if blocking {
-		params["blocking"] = blocking
 	}
 
 	rpc.ExecuteRPCCommand("sync_apply", params)

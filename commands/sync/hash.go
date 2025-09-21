@@ -19,8 +19,8 @@ func CreateCommandSyncHash() *cobra.Command {
 }
 
 func HandleCommandSyncHash(cmd *cobra.Command, args []string) {
+	// Create parameter map
 	params := map[string]any{}
-
 	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
 
 	//Check for arguments

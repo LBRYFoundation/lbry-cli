@@ -22,33 +22,25 @@ func CreateCommandUTXOList() *cobra.Command {
 }
 
 func HandleCommandUTXOList(cmd *cobra.Command, args []string) {
-	account_id, _ := cmd.Flags().GetString("account_id")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
-	page, _ := cmd.Flags().GetInt("page")
-	page_size, _ := cmd.Flags().GetInt("page_size")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "account_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "page")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "page_size")
 
 	// Check for arguments
 	if len(args) >= 1 {
-		account_id = args[0]
+		_, exists := params["account_id"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["account_id"] = args[0]
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{}
-	if account_id != "" {
-		params["account_id"] = account_id
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
-	}
-	if page != -1 {
-		params["page"] = page
-	}
-	if page_size != -1 {
-		params["page_size"] = page_size
 	}
 
 	rpc.ExecuteRPCCommand("utxo_list", params)

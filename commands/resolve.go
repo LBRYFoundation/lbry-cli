@@ -26,52 +26,32 @@ func CreateCommandResolve() *cobra.Command {
 }
 
 func HandleCommandResolve(cmd *cobra.Command, args []string) {
-	urls := []string{}
-	//urls, _ := cmd.Flags().GetStringArray("urls")
-
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
-	new_sdk_server, _ := cmd.Flags().GetString("new_sdk_server")
-	include_purchase_receipt, _ := cmd.Flags().GetBool("include_purchase_receipt")
-	include_is_my_output, _ := cmd.Flags().GetBool("include_is_my_output")
-	include_sent_supports, _ := cmd.Flags().GetBool("include_sent_supports")
-	include_sent_tips, _ := cmd.Flags().GetBool("include_sent_tips")
-	include_received_tips, _ := cmd.Flags().GetBool("include_received_tips")
+	// Create parameter map
+	params := map[string]any{}
+	//rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "urls")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "new_sdk_server")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_purchase_receipt")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_is_my_output")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_sent_supports")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_sent_tips")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_received_tips")
 
 	// Check for arguments
 	if len(args) >= 1 {
+		_, exists := params["urls"]
+		if exists {
+			cmd.Help()
+			return
+		}
 		// Variable arguments
-		urls = args
+		params["urls"] = args
 	}
 
-	if len(urls) == 0 {
+	_, exists := params["urls"]
+	if !exists {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{
-		"urls": urls,
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
-	}
-	if new_sdk_server != "" {
-		params["new_sdk_server"] = new_sdk_server
-	}
-	if include_purchase_receipt {
-		params["include_purchase_receipt"] = include_purchase_receipt
-	}
-	if include_is_my_output {
-		params["include_is_my_output"] = include_is_my_output
-	}
-	if include_sent_supports {
-		params["include_sent_supports"] = include_sent_supports
-	}
-	if include_sent_tips {
-		params["include_sent_tips"] = include_sent_tips
-	}
-	if include_received_tips {
-		params["include_received_tips"] = include_received_tips
 	}
 
 	rpc.ExecuteRPCCommand("resolve", params)

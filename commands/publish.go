@@ -51,60 +51,60 @@ func CreateCommandPublish() *cobra.Command {
 }
 
 func HandleCommandPublish(cmd *cobra.Command, args []string) {
-	name, _ := cmd.Flags().GetString("name")
-	bid, _ := cmd.Flags().GetString("bid")
-	cmd.Flags().GetString("file_path")
-	cmd.Flags().GetString("file_name")
-	cmd.Flags().GetString("file_hash")
-	cmd.Flags().GetBool("validate_file")
-	cmd.Flags().GetBool("optimize_file")
-	cmd.Flags().GetString("fee_currency")
-	cmd.Flags().GetFloat64("fee_amount")
-	cmd.Flags().GetString("fee_address")
-	cmd.Flags().GetString("title")
-	cmd.Flags().GetString("description")
-	cmd.Flags().GetString("author")
-	cmd.Flags().GetStringArray("tags")
-	cmd.Flags().GetStringArray("languages")
-	cmd.Flags().GetStringArray("locations")
-	cmd.Flags().GetString("license")
-	cmd.Flags().GetString("license_url")
-	cmd.Flags().GetString("thumbnail_url")
-	cmd.Flags().GetInt("release_time")
-	cmd.Flags().GetInt("width")
-	cmd.Flags().GetInt("height")
-	cmd.Flags().GetInt("duration")
-	cmd.Flags().GetString("sd_hash")
-	cmd.Flags().GetString("channel_id")
-	cmd.Flags().GetString("channel_name")
-	cmd.Flags().GetString("channel_account_id")
-	cmd.Flags().GetString("account_id")
-	cmd.Flags().GetString("wallet_id")
-	cmd.Flags().GetStringArray("funding_account_ids")
-	cmd.Flags().GetString("claim_address")
-	cmd.Flags().GetBool("preview")
-	cmd.Flags().GetBool("blocking")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "bid")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "file_path")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "file_name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "file_hash")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "validate_file")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "optimize_file")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "fee_currency")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetFloat64, "fee_amount")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "fee_address")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "title")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "description")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "author")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "tags")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "languages")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "locations")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "license")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "license_url")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "thumbnail_url")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "release_time")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "width")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "height")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "duration")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "sd_hash")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "channel_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "channel_name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "channel_account_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "account_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "funding_account_ids")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "claim_address")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "preview")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "blocking")
 
 	// Check for arguments
 	if len(args) >= 1 {
-		name = args[0]
+		_, exists := params["name"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["name"] = args[0]
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
 	}
 
-	if name == "" {
+	_, exists := params["name"]
+	if !exists {
 		cmd.Help()
 		return
-	}
-
-	// Create parameter map
-	params := map[string]any{
-		"name": name,
-	}
-	if bid != "" {
-		params["bid"] = bid
 	}
 
 	rpc.ExecuteRPCCommand("publish", params)
