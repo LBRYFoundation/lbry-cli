@@ -10,7 +10,7 @@ func CreateCommandSettingsGet() *cobra.Command {
 	settings_get := &cobra.Command{
 		Use:   "get",
 		Short: "Get daemon settings",
-		Run: HandleCommandSettingsGet,
+		Run:   HandleCommandSettingsGet,
 	}
 
 	return settings_get

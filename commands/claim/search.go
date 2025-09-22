@@ -77,252 +77,80 @@ func CreateCommandClaimSearch() *cobra.Command {
 }
 
 func HandleCommandClaimSearch(cmd *cobra.Command, args []string) {
-	name, _ := cmd.Flags().GetString("name")
-	text, _ := cmd.Flags().GetString("text")
-	claim_id, _ := cmd.Flags().GetString("claim_id")
-	claim_ids, _ := cmd.Flags().GetStringArray("claim_ids")
-	txid, _ := cmd.Flags().GetString("txid")
-	nout, _ := cmd.Flags().GetString("nout")
-	channel, _ := cmd.Flags().GetString("channel")
-	channel_ids, _ := cmd.Flags().GetStringArray("channel_ids")
-	not_channel_ids, _ := cmd.Flags().GetStringArray("not_channel_ids")
-	has_channel_signature, _ := cmd.Flags().GetBool("has_channel_signature")
-	valid_channel_signature, _ := cmd.Flags().GetBool("valid_channel_signature")
-	invalid_channel_signature, _ := cmd.Flags().GetBool("invalid_channel_signature")
-	limit_claims_per_channel, _ := cmd.Flags().GetInt("limit_claims_per_channel")
-	is_controlling, _ := cmd.Flags().GetBool("is_controlling")
-	public_key_id, _ := cmd.Flags().GetString("public_key_id")
-	height, _ := cmd.Flags().GetInt("height")
-	timestamp, _ := cmd.Flags().GetInt("timestamp")
-	creation_height, _ := cmd.Flags().GetInt("creation_height")
-	creation_timestamp, _ := cmd.Flags().GetInt("creation_timestamp")
-	activation_height, _ := cmd.Flags().GetInt("activation_height")
-	expiration_height, _ := cmd.Flags().GetInt("expiration_height")
-	release_time, _ := cmd.Flags().GetInt("release_time")
-	amount, _ := cmd.Flags().GetInt("amount")
-	support_amount, _ := cmd.Flags().GetInt("support_amount")
-	effective_amount, _ := cmd.Flags().GetInt("effective_amount")
-	trending_score, _ := cmd.Flags().GetInt("trending_score")
-	trending_group, _ := cmd.Flags().GetInt("trending_group")
-	trending_mixed, _ := cmd.Flags().GetInt("trending_mixed")
-	trending_local, _ := cmd.Flags().GetInt("trending_local")
-	trending_global, _ := cmd.Flags().GetInt("trending_global")
-	reposted_claim_id, _ := cmd.Flags().GetString("reposted_claim_id")
-	reposted, _ := cmd.Flags().GetInt("reposted")
-	claim_type, _ := cmd.Flags().GetString("claim_type")
-	stream_types, _ := cmd.Flags().GetStringArray("stream_types")
-	media_types, _ := cmd.Flags().GetStringArray("media_types")
-	fee_currency, _ := cmd.Flags().GetString("fee_currency")
-	fee_amount, _ := cmd.Flags().GetFloat64("fee_amount")
-	duration, _ := cmd.Flags().GetInt("duration")
-	any_tags, _ := cmd.Flags().GetStringArray("any_tags")
-	all_tags, _ := cmd.Flags().GetStringArray("all_tags")
-	not_tags, _ := cmd.Flags().GetStringArray("not_tags")
-	any_languages, _ := cmd.Flags().GetStringArray("any_languages")
-	all_languages, _ := cmd.Flags().GetStringArray("all_languages")
-	not_languages, _ := cmd.Flags().GetStringArray("not_languages")
-	any_locations, _ := cmd.Flags().GetStringArray("any_locations")
-	all_locations, _ := cmd.Flags().GetStringArray("all_locations")
-	not_locations, _ := cmd.Flags().GetStringArray("not_locations")
-	page, _ := cmd.Flags().GetInt("page")
-	page_size, _ := cmd.Flags().GetInt("page_size")
-	order_by, _ := cmd.Flags().GetStringArray("order_by")
-	no_totals, _ := cmd.Flags().GetBool("no_totals")
-	wallet_id, _ := cmd.Flags().GetString("wallet_id")
-	include_purchase_receipt, _ := cmd.Flags().GetBool("include_purchase_receipt")
-	include_is_my_output, _ := cmd.Flags().GetBool("include_is_my_output")
-	remove_duplicates, _ := cmd.Flags().GetBool("remove_duplicates")
-	has_source, _ := cmd.Flags().GetBool("has_source")
-	sd_hash, _ := cmd.Flags().GetString("sd_hash")
-	has_no_source, _ := cmd.Flags().GetBool("has_no_source")
-	new_sdk_server, _ := cmd.Flags().GetString("new_sdk_server")
+	// Create parameter map
+	params := map[string]any{}
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "name")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "text")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "claim_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "claim_ids")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "txid")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "nout")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "channel")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "channel_ids")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "not_channel_ids")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "has_channel_signature")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "valid_channel_signature")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "invalid_channel_signature")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "limit_claims_per_channel")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "is_controlling")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "public_key_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "height")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "timestamp")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "creation_height")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "creation_timestamp")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "activation_height")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "expiration_height")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "release_time")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "amount")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "support_amount")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "effective_amount")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "trending_score")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "trending_group")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "trending_mixed")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "trending_local")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "trending_global")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "reposted_claim_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "reposted")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "claim_type")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "stream_types")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "media_types")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "fee_currency")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetFloat64, "fee_amount")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "duration")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "any_tags")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "all_tags")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "not_tags")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "any_languages")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "all_languages")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "not_languages")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "any_locations")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "all_locations")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "not_locations")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "page")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetInt, "page_size")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetStringArray, "order_by")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "no_totals")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "wallet_id")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_purchase_receipt")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "include_is_my_output")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "remove_duplicates")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "has_source")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "sd_hash")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetBool, "has_no_source")
+	rpc.AddParameter(params, cmd.Flags(), cmd.Flags().GetString, "new_sdk_server")
 
 	// Check for arguments
 	if len(args) >= 1 {
-		name = args[0]
+		_, exists := params["name"]
+		if exists {
+			cmd.Help()
+			return
+		}
+		params["name"] = args[0]
 	}
 	if len(args) > 1 {
 		cmd.Help()
 		return
-	}
-
-	params := map[string]any{}
-	if name != "" {
-		params["name"] = name
-	}
-	if text != "" {
-		params["text"] = text
-	}
-	if claim_id != "" {
-		params["claim_id"] = claim_id
-	}
-	if len(claim_ids) > 0 {
-		params["claim_ids"] = claim_ids
-	}
-	if txid != "" {
-		params["txid"] = txid
-	}
-	if nout != "" {
-		params["nout"] = nout
-	}
-	if channel != "" {
-		params["channel"] = channel
-	}
-	if len(channel_ids) > 0 {
-		params["channel_ids"] = channel_ids
-	}
-	if len(not_channel_ids) > 0 {
-		params["not_channel_ids"] = not_channel_ids
-	}
-	if has_channel_signature {
-		params["has_channel_signature"] = has_channel_signature
-	}
-	if valid_channel_signature {
-		params["valid_channel_signature"] = valid_channel_signature
-	}
-	if invalid_channel_signature {
-		params["invalid_channel_signature"] = invalid_channel_signature
-	}
-	if limit_claims_per_channel != -1 {
-		params["limit_claims_per_channel"] = limit_claims_per_channel
-	}
-	if is_controlling {
-		params["is_controlling"] = is_controlling
-	}
-	if public_key_id != "" {
-		params["public_key_id"] = public_key_id
-	}
-	if height != -1 {
-		params["height"] = height
-	}
-	if timestamp != -1 {
-		params["timestamp"] = timestamp
-	}
-	if creation_height != -1 {
-		params["creation_height"] = creation_height
-	}
-	if creation_timestamp != -1 {
-		params["creation_timestamp"] = creation_timestamp
-	}
-	if activation_height != -1 {
-		params["activation_height"] = activation_height
-	}
-	if expiration_height != -1 {
-		params["expiration_height"] = expiration_height
-	}
-	if release_time != -1 {
-		params["release_time"] = release_time
-	}
-	if amount != -1 {
-		params["amount"] = amount
-	}
-	if support_amount != -1 {
-		params["support_amount"] = support_amount
-	}
-	if effective_amount != -1 {
-		params["effective_amount"] = effective_amount
-	}
-	if trending_score != -1 {
-		params["trending_score"] = trending_score
-	}
-	if trending_group != -1 {
-		params["trending_group"] = trending_group
-	}
-	if trending_mixed != -1 {
-		params["trending_mixed"] = trending_mixed
-	}
-	if trending_local != -1 {
-		params["trending_local"] = trending_local
-	}
-	if trending_global != -1 {
-		params["trending_global"] = trending_global
-	}
-	if reposted_claim_id != "" {
-		params["reposted_claim_id"] = reposted_claim_id
-	}
-	if reposted != -1 {
-		params["reposted"] = reposted
-	}
-	if claim_type != "" {
-		params["claim_type"] = claim_type
-	}
-	if len(stream_types) > 0 {
-		params["stream_types"] = stream_types
-	}
-	if len(media_types) > 0 {
-		params["media_types"] = media_types
-	}
-	if fee_currency != "" {
-		params["fee_currency"] = fee_currency
-	}
-	if fee_amount != -1 {
-		params["fee_amount"] = fee_amount
-	}
-	if duration != -1 {
-		params["duration"] = duration
-	}
-	if len(any_tags) > 0 {
-		params["any_tags"] = any_tags
-	}
-	if len(all_tags) > 0 {
-		params["all_tags"] = all_tags
-	}
-	if len(not_tags) > 0 {
-		params["not_tags"] = not_tags
-	}
-	if len(any_languages) > 0 {
-		params["any_languages"] = any_languages
-	}
-	if len(all_languages) > 0 {
-		params["all_languages"] = all_languages
-	}
-	if len(not_languages) > 0 {
-		params["not_languages"] = not_languages
-	}
-	if len(any_locations) > 0 {
-		params["any_locations"] = any_locations
-	}
-	if len(all_locations) > 0 {
-		params["all_locations"] = all_locations
-	}
-	if len(not_locations) > 0 {
-		params["not_locations"] = not_locations
-	}
-	if page != -1 {
-		params["page"] = page
-	}
-	if page_size != -1 {
-		params["page_size"] = page_size
-	}
-	if len(order_by) > 0 {
-		params["order_by"] = order_by
-	}
-	if no_totals {
-		params["no_totals"] = no_totals
-	}
-	if wallet_id != "" {
-		params["wallet_id"] = wallet_id
-	}
-	if include_purchase_receipt {
-		params["include_purchase_receipt"] = include_purchase_receipt
-	}
-	if include_is_my_output {
-		params["include_is_my_output"] = include_is_my_output
-	}
-	if remove_duplicates {
-		params["remove_duplicates"] = remove_duplicates
-	}
-	if has_source {
-		params["has_source"] = has_source
-	}
-	if sd_hash != "" {
-		params["sd_hash"] = sd_hash
-	}
-	if has_no_source {
-		params["has_no_source"] = has_no_source
-	}
-	if new_sdk_server != "" {
-		params["new_sdk_server"] = new_sdk_server
 	}
 
 	rpc.ExecuteRPCCommand("claim_search", params)
