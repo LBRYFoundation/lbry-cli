@@ -23,5 +23,5 @@ func HandleCommandSettingsGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("settings_get")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "settings_get")
 }

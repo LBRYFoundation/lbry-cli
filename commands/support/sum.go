@@ -65,5 +65,5 @@ func HandleCommandSupportSum(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("support_sum", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "support_sum", params)
 }

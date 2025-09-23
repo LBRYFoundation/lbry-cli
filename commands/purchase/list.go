@@ -47,5 +47,5 @@ func HandleCommandPurchaseList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("purchase_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "purchase_list", params)
 }

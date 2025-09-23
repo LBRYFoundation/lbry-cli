@@ -91,5 +91,5 @@ func HandleCommandChannelUpdate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("channel_update", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "channel_update", params)
 }

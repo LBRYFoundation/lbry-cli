@@ -39,5 +39,5 @@ func HandleCommandTraceMAllocTop(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("tracemalloc_top", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "tracemalloc_top", params)
 }

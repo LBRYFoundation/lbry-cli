@@ -59,5 +59,5 @@ func HandleCommandClaimList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("claim_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "claim_list", params)
 }

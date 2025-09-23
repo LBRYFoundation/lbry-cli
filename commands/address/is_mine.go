@@ -49,5 +49,5 @@ func HandleCommandAddressIsMine(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("address_is_mine", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "address_is_mine", params)
 }

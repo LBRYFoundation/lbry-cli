@@ -47,5 +47,5 @@ func HandleCommandAccountAdd(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_add", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_add", params)
 }

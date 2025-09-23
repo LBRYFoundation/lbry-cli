@@ -23,5 +23,5 @@ func HandleCommandFFmpegFind(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("ffmpeg_find")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "ffmpeg_find")
 }

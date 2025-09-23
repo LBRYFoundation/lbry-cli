@@ -36,5 +36,5 @@ func HandleCommandBlobReflect(cmd *cobra.Command, args []string) {
 		params["blob_hashes"] = args
 	}
 
-	rpc.ExecuteRPCCommand("blob_reflect", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "blob_reflect", params)
 }

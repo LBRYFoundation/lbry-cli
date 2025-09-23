@@ -65,5 +65,5 @@ func HandleCommandChannelAbandon(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("channel_abandon", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "channel_abandon", params)
 }

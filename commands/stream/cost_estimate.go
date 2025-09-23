@@ -37,5 +37,5 @@ func HandleCommandStreamCostEstimate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("stream_cost_estimate", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "stream_cost_estimate", params)
 }

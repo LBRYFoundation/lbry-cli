@@ -59,5 +59,5 @@ func HandleCommandTXOSum(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("txo_sum", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "txo_sum", params)
 }

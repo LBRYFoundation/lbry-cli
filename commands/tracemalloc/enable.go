@@ -23,5 +23,5 @@ func HandleCommandTraceMAllocEnable(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("tracemalloc_enable")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "tracemalloc_enable")
 }

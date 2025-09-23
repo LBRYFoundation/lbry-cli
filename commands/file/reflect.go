@@ -37,5 +37,5 @@ func HandleCommandFileReflect(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("file_reflect", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "file_reflect", params)
 }

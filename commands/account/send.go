@@ -63,5 +63,5 @@ func HandleCommandAccountSend(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_send", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_send", params)
 }

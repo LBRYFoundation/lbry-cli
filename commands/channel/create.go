@@ -81,5 +81,5 @@ func HandleCommandChannelCreate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("channel_create", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "channel_create", params)
 }

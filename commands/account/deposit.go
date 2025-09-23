@@ -105,5 +105,5 @@ func HandleCommandAccountDeposit(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_deposit", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_deposit", params)
 }

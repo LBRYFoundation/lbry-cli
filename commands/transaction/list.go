@@ -43,5 +43,5 @@ func HandleCommandTransactionList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("transaction_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "transaction_list", params)
 }

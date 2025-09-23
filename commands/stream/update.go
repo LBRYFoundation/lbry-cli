@@ -115,5 +115,5 @@ func HandleCommandStreamUpdate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("stream_update")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "stream_update")
 }

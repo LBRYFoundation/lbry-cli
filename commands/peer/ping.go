@@ -59,5 +59,5 @@ func HandleCommandPeerPing(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("peer_ping", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "peer_ping", params)
 }

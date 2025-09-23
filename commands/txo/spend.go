@@ -58,5 +58,5 @@ func HandleCommandTXOSpend(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("txo_spend", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "txo_spend", params)
 }

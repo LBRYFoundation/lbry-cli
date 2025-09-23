@@ -33,5 +33,5 @@ func HandleCommandWalletList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_list", params)
 }

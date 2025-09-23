@@ -59,5 +59,5 @@ func HandleCommandAccountBalance(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_balance", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_balance", params)
 }

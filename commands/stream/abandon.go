@@ -65,5 +65,5 @@ func HandleCommandStreamAbandon(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("stream_abandon", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "stream_abandon", params)
 }

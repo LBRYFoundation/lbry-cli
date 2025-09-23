@@ -83,5 +83,5 @@ func HandleCommandStreamRepost(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("stream_repost", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "stream_repost", params)
 }

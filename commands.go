@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"lbry/cli/commands"
+	"runtime/debug"
 
 	"github.com/spf13/cobra"
 
@@ -12,6 +14,7 @@ func CreateCommand() *cobra.Command {
 	rootCmd := &cobra.Command{
 		Use:   "lbry-cli",
 		Short: "An interface to the LBRY Network.",
+		Run:   HandleCommand,
 	}
 	rootCmd.CompletionOptions.DisableDefaultCmd = true
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
@@ -54,5 +57,19 @@ func CreateCommand() *cobra.Command {
 	rootCmd.AddCommand(commands.CreateCommandVersion())
 	rootCmd.AddCommand(commands.CreateCommandWallet())
 
+	rootCmd.PersistentFlags().String("api", "", "Host name and port for lbrynet daemon API.")
+
+	rootCmd.Flags().BoolP("version", "V", false, "Show lbrynet CLI version and exit.")
+
 	return rootCmd
+}
+
+func HandleCommand(cmd *cobra.Command, args []string) {
+	if cmd.Flags().Changed("version") {
+		info, _ := debug.ReadBuildInfo()
+		fmt.Println("LBRY CLI " + info.Main.Version)
+		return
+	}
+
+	cmd.Help()
 }

@@ -43,5 +43,5 @@ func HandleCommandSupportAbandon(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("support_abandon", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "support_abandon", params)
 }

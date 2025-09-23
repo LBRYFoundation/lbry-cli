@@ -23,5 +23,5 @@ func HandleCommandStatus(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("status")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "status")
 }

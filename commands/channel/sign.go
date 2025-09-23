@@ -71,5 +71,5 @@ func HandleCommandChannelSign(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("channel_sign", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "channel_sign", params)
 }

@@ -53,5 +53,5 @@ func HandleCommandStreamList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("stream_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "stream_list", params)
 }

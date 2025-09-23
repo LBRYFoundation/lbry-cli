@@ -23,5 +23,5 @@ func HandleCommandStop(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("stop")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "stop")
 }

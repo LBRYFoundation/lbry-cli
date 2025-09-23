@@ -23,5 +23,5 @@ func HandleCommandBlobReflectAll(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("blob_reflect_all")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "blob_reflect_all")
 }

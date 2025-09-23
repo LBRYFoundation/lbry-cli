@@ -37,5 +37,5 @@ func HandleCommandAddressList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("address_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "address_list", params)
 }

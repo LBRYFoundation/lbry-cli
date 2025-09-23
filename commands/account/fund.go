@@ -73,5 +73,5 @@ func HandleCommandAccountFund(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_fund", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_fund", params)
 }

@@ -108,5 +108,5 @@ func HandleCommandPublish(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("publish", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "publish", params)
 }

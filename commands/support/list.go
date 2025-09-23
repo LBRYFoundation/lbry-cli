@@ -57,5 +57,5 @@ func HandleCommandSupportList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("support_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "support_list", params)
 }

@@ -39,5 +39,5 @@ func HandleCommandAccountRemove(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_remove", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_remove", params)
 }

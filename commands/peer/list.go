@@ -41,5 +41,5 @@ func HandleCommandPeerList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("peer_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "peer_list", params)
 }

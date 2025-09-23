@@ -5,8 +5,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"math/rand/v2"
+	"net/url"
 	"os"
+	"regexp"
+	"strings"
 
+	"github.com/spf13/cobra"
 	"github.com/spf13/pflag"
 	"github.com/ybbus/jsonrpc/v3"
 )
@@ -18,8 +22,31 @@ func AddParameter[T any](parameters map[string]any, f *pflag.FlagSet, get func(n
 	}
 }
 
-func ExecuteRPCCommand(method string, params ...interface{}) {
-	rpcClient := jsonrpc.NewClient("http://localhost:5279/")
+func GetURL(cmd *cobra.Command) string {
+	if cmd.Flags().Changed("api") {
+		api, _ := cmd.Flags().GetString("api")
+		if !strings.HasPrefix(api, "//") && !regexp.MustCompile(`^[A-Za-z][A-Za-z0-9+.-]*://`).MatchString(api) {
+			api = "//" + api
+		}
+		url, err := url.Parse(api)
+		if err != nil {
+			cmd.Help()
+		}
+		if url.Scheme == "" {
+			// Use HTTP if scheme is absent
+			url.Scheme = "http"
+		}
+		if url.Path == "" {
+			// Use "/lbryapi" if path is absent
+			url.Path = "/lbryapi"
+		}
+		return url.String()
+	}
+	return "http://localhost:5279/"
+}
+
+func ExecuteRPCCommand(url string, method string, params ...interface{}) {
+	rpcClient := jsonrpc.NewClient(url)
 
 	request := jsonrpc.NewRequestWithID(rand.Int(), method, params...)
 	response, err := rpcClient.CallRaw(context.Background(), request)

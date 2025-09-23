@@ -23,5 +23,5 @@ func HandleCommandWalletReconnect(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_reconnect")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_reconnect")
 }

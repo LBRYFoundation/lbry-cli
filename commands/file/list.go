@@ -75,6 +75,6 @@ func HandleCommandFileList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("file_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "file_list", params)
 
 }

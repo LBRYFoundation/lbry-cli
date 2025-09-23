@@ -45,5 +45,5 @@ func HandleCommandFileSetStatus(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("file_set_status", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "file_set_status", params)
 }

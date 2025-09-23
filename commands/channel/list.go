@@ -53,5 +53,5 @@ func HandleCommandChannelList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("channel_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "channel_list", params)
 }

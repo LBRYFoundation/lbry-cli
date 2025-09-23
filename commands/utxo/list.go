@@ -43,5 +43,5 @@ func HandleCommandUTXOList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("utxo_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "utxo_list", params)
 }

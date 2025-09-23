@@ -71,5 +71,5 @@ func HandleCommandTXOList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("txo_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "txo_list", params)
 }

@@ -80,5 +80,5 @@ func HandleCommandGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("get", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "get", params)
 }

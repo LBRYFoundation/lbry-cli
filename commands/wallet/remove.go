@@ -37,5 +37,5 @@ func HandleCommandWalletRemove(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_remove", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_remove", params)
 }

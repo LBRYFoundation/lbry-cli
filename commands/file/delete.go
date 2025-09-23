@@ -51,5 +51,5 @@ func HandleCommandFileDelete(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("file_delete", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "file_delete", params)
 }

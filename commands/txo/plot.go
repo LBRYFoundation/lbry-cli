@@ -67,5 +67,5 @@ func HandleCommandTXOPlot(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("txo_plot", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "txo_plot", params)
 }

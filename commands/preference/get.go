@@ -46,5 +46,5 @@ func HandleCommandPreferenceGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("preference_get", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "preference_get", params)
 }

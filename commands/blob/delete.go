@@ -37,5 +37,5 @@ func HandleCommandBlobDelete(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("blob_delete", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "blob_delete", params)
 }

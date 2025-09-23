@@ -41,5 +41,5 @@ func HandleCommandBlobAnnounce(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("blob_announce", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "blob_announce", params)
 }

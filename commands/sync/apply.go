@@ -50,5 +50,5 @@ func HandleCommandSyncApply(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("sync_apply", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "sync_apply", params)
 }

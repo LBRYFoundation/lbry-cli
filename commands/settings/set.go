@@ -54,5 +54,5 @@ func HandleCommandSettingsSet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("settings_set", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "settings_set", params)
 }

@@ -43,5 +43,5 @@ func HandleCommandPurchaseCreate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("purchase_create", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "purchase_create", params)
 }

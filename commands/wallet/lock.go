@@ -29,5 +29,5 @@ func HandleCommandWalletLock(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_lock", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_lock", params)
 }

@@ -49,5 +49,5 @@ func HandleCommandFileSave(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("file_save", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "file_save", params)
 }

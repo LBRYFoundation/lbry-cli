@@ -36,5 +36,5 @@ func HandleCommandCollectionResolve(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("collection_resolve", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "collection_resolve", params)
 }

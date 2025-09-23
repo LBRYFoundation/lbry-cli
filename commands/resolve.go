@@ -55,5 +55,5 @@ func HandleCommandResolve(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("resolve", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "resolve", params)
 }

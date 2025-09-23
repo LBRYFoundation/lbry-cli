@@ -23,5 +23,5 @@ func HandleCommandRoutingTableGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("routing_table_get")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "routing_table_get")
 }

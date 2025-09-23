@@ -43,5 +43,5 @@ func HandleCommandChannelExport(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("channel_export", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "channel_export", params)
 }

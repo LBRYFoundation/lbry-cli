@@ -41,5 +41,5 @@ func HandleCommandUTXORelease(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("utxo_release", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "utxo_release", params)
 }

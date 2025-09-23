@@ -29,5 +29,5 @@ func HandleCommandWalletDecrypt(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_decrypt", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_decrypt", params)
 }

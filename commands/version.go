@@ -23,5 +23,5 @@ func HandleCommandVersion(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("version")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "version")
 }

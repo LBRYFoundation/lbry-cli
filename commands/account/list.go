@@ -49,5 +49,5 @@ func HandleCommandAccountList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_list", params)
 }

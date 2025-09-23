@@ -153,5 +153,5 @@ func HandleCommandClaimSearch(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("claim_search", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "claim_search", params)
 }

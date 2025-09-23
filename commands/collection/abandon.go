@@ -65,5 +65,5 @@ func HandleCommandCollectionAbandon(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("collection_abandon", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "collection_abandon", params)
 }

@@ -81,5 +81,5 @@ func HandleCommandCollectionUpdate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("collection_update", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "collection_update", params)
 }

@@ -39,5 +39,5 @@ func HandleCommandAccountMaxAddressGap(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_max_address_gap", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_max_address_gap", params)
 }

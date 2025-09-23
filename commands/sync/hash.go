@@ -37,5 +37,5 @@ func HandleCommandSyncHash(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("sync_hash", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "sync_hash", params)
 }

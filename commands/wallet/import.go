@@ -51,5 +51,5 @@ func HandleCommandWalletImport(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_import", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_import", params)
 }

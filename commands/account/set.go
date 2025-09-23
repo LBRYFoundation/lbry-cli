@@ -51,5 +51,5 @@ func HandleCommandAccountSet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("account_set", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "account_set", params)
 }

@@ -41,5 +41,5 @@ func HandleCommandBlobGet(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("blob_get", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "blob_get", params)
 }

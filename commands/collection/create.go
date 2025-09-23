@@ -83,5 +83,5 @@ func HandleCommandCollectionCreate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("collection_create", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "collection_create", params)
 }

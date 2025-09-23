@@ -23,5 +23,5 @@ func HandleCommandBlobClean(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("blob_clean")
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "blob_clean")
 }

@@ -37,5 +37,5 @@ func HandleCommandWalletStatus(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_status", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_status", params)
 }

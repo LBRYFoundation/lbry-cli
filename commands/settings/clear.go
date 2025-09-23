@@ -41,5 +41,5 @@ func HandleCommandSettingsClear(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("settings_clear", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "settings_clear", params)
 }

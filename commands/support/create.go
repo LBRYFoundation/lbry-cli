@@ -59,5 +59,5 @@ func HandleCommandSupportCreate(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("support_create", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "support_create", params)
 }

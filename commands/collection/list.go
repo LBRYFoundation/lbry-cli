@@ -47,5 +47,5 @@ func HandleCommandCollectionList(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("collection_list", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "collection_list", params)
 }

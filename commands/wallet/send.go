@@ -65,5 +65,5 @@ func HandleCommandWalletSend(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("wallet_send", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "wallet_send", params)
 }

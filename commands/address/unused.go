@@ -31,5 +31,5 @@ func HandleCommandAddressUnused(cmd *cobra.Command, args []string) {
 		return
 	}
 
-	rpc.ExecuteRPCCommand("address_unused", params)
+	rpc.ExecuteRPCCommand(rpc.GetURL(cmd), "address_unused", params)
 }
