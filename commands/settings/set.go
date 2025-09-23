@@ -48,7 +48,6 @@ func HandleCommandSettingsSet(cmd *cobra.Command, args []string) {
 		cmd.Help()
 		return
 	}
-	// Check for required parameters
 	_, existsValue := params["value"]
 	if !existsValue {
 		cmd.Help()
