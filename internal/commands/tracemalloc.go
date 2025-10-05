@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/tracemalloc"
+	commands "lbry/cli/internal/commands/tracemalloc"
 
 	"github.com/spf13/cobra"
 )

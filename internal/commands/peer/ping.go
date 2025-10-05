@@ -1,7 +1,7 @@
 package commands_peer
 
 import (
-	"lbry/cli/rpc"
+	"lbry/cli/internal/rpc"
 	"strconv"
 
 	"github.com/spf13/cobra"

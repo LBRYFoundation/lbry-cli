@@ -1,7 +1,7 @@
 package commands_tracemalloc
 
 import (
-	"lbry/cli/rpc"
+	"lbry/cli/internal/rpc"
 	"strconv"
 
 	"github.com/spf13/cobra"

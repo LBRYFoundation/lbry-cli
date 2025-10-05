@@ -1,7 +1,7 @@
 package commands_channel
 
 import (
-	"lbry/cli/rpc"
+	"lbry/cli/internal/rpc"
 
 	"github.com/spf13/cobra"
 )

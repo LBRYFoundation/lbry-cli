@@ -1,8 +1,7 @@
-package main
+package commands
 
 import (
 	"fmt"
-	"lbry/cli/commands"
 	"runtime/debug"
 
 	"github.com/spf13/cobra"
@@ -28,34 +27,34 @@ func CreateCommand() *cobra.Command {
 		Flags:    cc.Bold,
 	})
 
-	rootCmd.AddCommand(commands.CreateCommandAccount())
-	rootCmd.AddCommand(commands.CreateCommandAddress())
-	rootCmd.AddCommand(commands.CreateCommandBlob())
-	rootCmd.AddCommand(commands.CreateCommandChannel())
-	rootCmd.AddCommand(commands.CreateCommandClaim())
-	rootCmd.AddCommand(commands.CreateCommandCollection())
-	rootCmd.AddCommand(commands.CreateCommandFFmpegFind())
-	rootCmd.AddCommand(commands.CreateCommandFile())
-	rootCmd.AddCommand(commands.CreateCommandGet())
-	rootCmd.AddCommand(commands.CreateCommandPeer())
-	rootCmd.AddCommand(commands.CreateCommandPreference())
-	rootCmd.AddCommand(commands.CreateCommandPublish())
-	rootCmd.AddCommand(commands.CreateCommandPurchase())
-	rootCmd.AddCommand(commands.CreateCommandResolve())
-	rootCmd.AddCommand(commands.CreateCommandRoutingTableGet())
-	rootCmd.AddCommand(commands.CreateCommandSettings())
-	rootCmd.AddCommand(commands.CreateCommandStart())
-	rootCmd.AddCommand(commands.CreateCommandStatus())
-	rootCmd.AddCommand(commands.CreateCommandStop())
-	rootCmd.AddCommand(commands.CreateCommandStream())
-	rootCmd.AddCommand(commands.CreateCommandSupport())
-	rootCmd.AddCommand(commands.CreateCommandSync())
-	rootCmd.AddCommand(commands.CreateCommandTraceMAlloc())
-	rootCmd.AddCommand(commands.CreateCommandTransaction())
-	rootCmd.AddCommand(commands.CreateCommandTXO())
-	rootCmd.AddCommand(commands.CreateCommandUTXO())
-	rootCmd.AddCommand(commands.CreateCommandVersion())
-	rootCmd.AddCommand(commands.CreateCommandWallet())
+	rootCmd.AddCommand(CreateCommandAccount())
+	rootCmd.AddCommand(CreateCommandAddress())
+	rootCmd.AddCommand(CreateCommandBlob())
+	rootCmd.AddCommand(CreateCommandChannel())
+	rootCmd.AddCommand(CreateCommandClaim())
+	rootCmd.AddCommand(CreateCommandCollection())
+	rootCmd.AddCommand(CreateCommandFFmpegFind())
+	rootCmd.AddCommand(CreateCommandFile())
+	rootCmd.AddCommand(CreateCommandGet())
+	rootCmd.AddCommand(CreateCommandPeer())
+	rootCmd.AddCommand(CreateCommandPreference())
+	rootCmd.AddCommand(CreateCommandPublish())
+	rootCmd.AddCommand(CreateCommandPurchase())
+	rootCmd.AddCommand(CreateCommandResolve())
+	rootCmd.AddCommand(CreateCommandRoutingTableGet())
+	rootCmd.AddCommand(CreateCommandSettings())
+	rootCmd.AddCommand(CreateCommandStart())
+	rootCmd.AddCommand(CreateCommandStatus())
+	rootCmd.AddCommand(CreateCommandStop())
+	rootCmd.AddCommand(CreateCommandStream())
+	rootCmd.AddCommand(CreateCommandSupport())
+	rootCmd.AddCommand(CreateCommandSync())
+	rootCmd.AddCommand(CreateCommandTraceMAlloc())
+	rootCmd.AddCommand(CreateCommandTransaction())
+	rootCmd.AddCommand(CreateCommandTXO())
+	rootCmd.AddCommand(CreateCommandUTXO())
+	rootCmd.AddCommand(CreateCommandVersion())
+	rootCmd.AddCommand(CreateCommandWallet())
 
 	rootCmd.PersistentFlags().String("api", "", "Host name and port for lbrynet daemon API.")
 

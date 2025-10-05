@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/peer"
+	commands "lbry/cli/internal/commands/peer"
 
 	"github.com/spf13/cobra"
 )

@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/channel"
+	commands "lbry/cli/internal/commands/channel"
 
 	"github.com/spf13/cobra"
 )

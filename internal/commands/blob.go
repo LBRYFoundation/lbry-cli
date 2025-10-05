@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/blob"
+	commands "lbry/cli/internal/commands/blob"
 
 	"github.com/spf13/cobra"
 )

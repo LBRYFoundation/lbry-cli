@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"lbry/cli/internal/commands"
 )
 
 func main() {
@@ -10,7 +12,7 @@ func main() {
 }
 
 func run() int {
-	rootCmd := CreateCommand()
+	rootCmd := commands.CreateCommand()
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/file"
+	commands "lbry/cli/internal/commands/file"
 
 	"github.com/spf13/cobra"
 )

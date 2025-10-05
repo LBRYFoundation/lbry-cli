@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/wallet"
+	commands "lbry/cli/internal/commands/wallet"
 
 	"github.com/spf13/cobra"
 )

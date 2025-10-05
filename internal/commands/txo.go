@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/txo"
+	commands "lbry/cli/internal/commands/txo"
 
 	"github.com/spf13/cobra"
 )

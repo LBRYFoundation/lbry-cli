@@ -1,7 +1,7 @@
 package commands
 
 import (
-	commands "lbry/cli/commands/utxo"
+	commands "lbry/cli/internal/commands/utxo"
 
 	"github.com/spf13/cobra"
 )
