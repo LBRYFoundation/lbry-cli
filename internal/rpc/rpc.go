@@ -57,14 +57,14 @@ func ExecuteRPCCommand(url string, method string, params ...interface{}) {
 	}
 
 	if response.Error != nil {
-		PrintRawJSON(response.Error)
+		printRawJSON(response.Error)
 		os.Exit(1)
 		return
 	}
-	PrintRawJSON(response.Result)
+	printRawJSON(response.Result)
 }
 
-func PrintRawJSON(v any) {
+func printRawJSON(v any) {
 	result, _ := json.MarshalIndent(v, "", "  ")
 	fmt.Println(string(result))
 }
