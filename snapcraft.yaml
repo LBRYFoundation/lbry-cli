@@ -41,9 +41,9 @@ platforms:
   i386:
     build-on: amd64
     build-for: i386
-  powerpc:
-    build-on: amd64
-    build-for: powerpc
+#  powerpc:
+#    build-on: amd64
+#    build-for: powerpc
   ppc64el:
     build-on: amd64
     build-for: ppc64el
