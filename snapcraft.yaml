@@ -29,6 +29,19 @@ parts:
     override-build: go build -o ${CRAFT_PART_INSTALL}/bin/lbry-cli
 
 platforms:
-  dinges:
-    build-on: amd64
-    build-for: [amd64, armhf]
+  - build-on: amd64
+    build-for: amd64
+  - build-on: amd64
+    build-for: arm64
+  - build-on: amd64
+    build-for: armhf
+  - build-on: amd64
+    build-for: i386
+  - build-on: amd64
+    build-for: powerpc
+  - build-on: amd64
+    build-for: ppc64el
+  - build-on: amd64
+    build-for: riscv64
+  - build-on: amd64
+    build-for: s390x
