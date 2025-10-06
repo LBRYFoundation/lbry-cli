@@ -7,15 +7,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [amd64, arm64, armhf, i386, powerpc, ppc64el, riscv64, s390x]
     steps:
       - uses: actions/checkout@v4
       - uses: snapcore/action-build@v1
         id: build
-        env:
-          CRAFT_ARCH_BUILD_FOR: ${{ matrix.arch }}
       - uses: snapcore/action-publish@v1
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}

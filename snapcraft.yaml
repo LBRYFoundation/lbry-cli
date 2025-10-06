@@ -14,3 +14,12 @@ issues:
 contact: board@lbry.org
 donation:
   - https://lbry.org/#donation
+platforms:
+  amd64:
+  arm64:
+  armhf:
+  i386:
+  powerpc:
+  ppc64el:
+  riscv64:
+  s390x:
