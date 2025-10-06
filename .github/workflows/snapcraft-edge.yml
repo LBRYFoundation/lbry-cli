@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install Snapcraft
+        run: sudo snap install snapcraft --classic
       - name: Install Go
         run: sudo snap install go --classic
       - name: Build and pack Snap package
