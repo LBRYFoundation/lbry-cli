@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
-        run: sudo snap install go
+        run: sudo snap install go --classic
       - uses: actions/checkout@v4
       - uses: snapcore/action-build@v1
         id: build
