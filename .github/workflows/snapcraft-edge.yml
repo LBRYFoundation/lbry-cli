@@ -13,6 +13,11 @@ jobs:
         run: sudo snap install snapcraft --classic
       - name: Install Go
         run: sudo snap install go --classic
+      - name: Install LXD
+        run: |
+          sudo snap install lxd --classic
+          sudo groupadd --force --system lxd
+          sudo usermod --append --groups lxd $USER
       - name: Build and pack Snap package
         run: snapcraft pack
       - name: Upload Snap package
