@@ -8,6 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Install Go
+        run: snap install go
       - uses: actions/checkout@v4
       - uses: snapcore/action-build@v1
         id: build

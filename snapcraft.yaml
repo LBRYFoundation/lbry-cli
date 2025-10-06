@@ -1,7 +1,7 @@
 name: lbry-cli
 title: LBRY CLI
 type: app
-base: core24
+base: core22
 confinement: strict
 version: master
 summary: LBRY Command Line Interface
@@ -14,12 +14,11 @@ issues:
 contact: board@lbry.org
 donation:
   - https://lbry.org/#donation
-platforms:
-  amd64:
-  arm64:
-  armhf:
-  i386:
-  powerpc:
-  ppc64el:
-  riscv64:
-  s390x:
+architectures: [amd64, arm64, armhf, i386, ppc64el, riscv64, s390x]
+
+parts:
+  lbry-cli:
+    plugin: go
+    source: .
+    build-packages:
+      - build-essential
