@@ -8,14 +8,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Install Go
         run: sudo snap install go --classic
-      - uses: actions/checkout@v4
-      - uses: snapcore/action-build@v1
-        id: build
-      - uses: snapcore/action-publish@v1
+      - name: Build and pack Snap package
+        run: snapcraft pack
+      - name: Upload Snap package
+        run: snapcraft upload --release=edge *.snap
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
-        with:
-          snap: ${{ steps.build.outputs.snap }}
-          release: edge
