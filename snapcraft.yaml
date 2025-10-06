@@ -15,20 +15,20 @@ contact: board@lbry.org
 donation:
   - https://lbry.org/#donation
 
-platforms:
-  amd64:
-  arm64:
-  armhf:
-#  i386:
-#  powerpc:
-  ppc64el:
-  riscv64:
-  s390x:
-
-plugs:
-  network:
+apps:
+  lbry-cli:
+    command: bin/lbry-cli
+    plugs:
+      - network
 
 parts:
   lbry-cli:
     plugin: go
     source: .
+    build-snaps: [go]
+    override-build: go build -o ${CRAFT_PART_INSTALL}/bin/lbry-cli
+
+platforms:
+  dinges:
+    build-on: amd64
+    build-for: [amd64, armhf]
