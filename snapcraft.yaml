@@ -1,2 +1,6 @@
 name: lbry-cli
-type: app
+base: core24
+confinement: classic
+version: master
+summary: The LBRY Command Line Interface (CLI) to interact with the LBRY Daemon.
+description: The LBRY Command Line Interface (CLI) to interact with the LBRY Daemon.
