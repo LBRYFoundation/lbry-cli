@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: snapcore/action-build@v1
         id: build
-        with:
-          snapcraft-args: --target-arch=${{ matrix.arch }}
+        env:
+          CRAFT_TARGET_ARCH: ${{ matrix.arch }}
       - uses: snapcore/action-publish@v1
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
