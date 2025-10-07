@@ -34,6 +34,12 @@ snap install lbry-cli
 winget install LBRY.CLI
 ```
 
+### Flatpak (using Flathub)
+
+```shell
+flatpak install flathub org.lbry.cli
+```
+
 ## Run
 
 ```shell
