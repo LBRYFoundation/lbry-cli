@@ -10,6 +10,8 @@
 ![Scoop Version](https://img.shields.io/scoop/v/lbry-cli)
 ![Conda Version](https://img.shields.io/conda/vn/conda-forge/lbry-cli?logo=anaconda)
 
+Native: [![Packaging status](https://repology.org/badge/vertical-allrepos/lbry-cli.svg)](https://repology.org/project/lbry-cli/versions)
+
 The LBRY Command Line Interface (CLI) to interact with the LBRY Daemon.
 
 ## Build
