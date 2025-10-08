@@ -6,6 +6,9 @@
 ![WinGet Package Version](https://img.shields.io/winget/v/LBRY.CLI)
 ![Flathub Version](https://img.shields.io/flathub/v/org.lbry.cli?logo=flathub)
 ![Homebrew Formula Version](https://img.shields.io/homebrew/v/lbry-cli?logo=homebrew)
+![Chocolatey Version](https://img.shields.io/chocolatey/v/lbry-cli?logo=chocolatey)
+![Scoop Version](https://img.shields.io/scoop/v/lbry-cli)
+![Conda Version](https://img.shields.io/conda/vn/conda-forge/lbry-cli?logo=anaconda)
 
 The LBRY Command Line Interface (CLI) to interact with the LBRY Daemon.
 
