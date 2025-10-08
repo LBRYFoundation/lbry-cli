@@ -5,6 +5,7 @@
 ![Snapcraft Version](https://img.shields.io/snapcraft/v/lbry-cli/latest/stable?logo=snapcraft)
 ![WinGet Package Version](https://img.shields.io/winget/v/LBRY.CLI)
 ![Flathub Version](https://img.shields.io/flathub/v/org.lbry.cli?logo=flathub)
+![Homebrew Formula Version](https://img.shields.io/homebrew/v/lbry-cli?logo=homebrew)
 
 The LBRY Command Line Interface (CLI) to interact with the LBRY Daemon.
 
