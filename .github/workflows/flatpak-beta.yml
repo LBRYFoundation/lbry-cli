@@ -17,7 +17,9 @@ jobs:
       - name: Setup Flatpak
         run: |
           flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak install flathub org.freedesktop.Platform//24.08 org.freedesktop.Sdk//24.08 -y
+          flatpak install flathub org.freedesktop.Platform//24.08 -y
+          flatpak install flathub org.freedesktop.Sdk//24.08 -y
+          flatpak install flathub org.freedesktop.Sdk.Extension.golang//24.08 -y
       - name: Build Flatpak
         run: flatpak-builder --repo=repo --force-clean build-dir org.lbry.cli.json
       - name: Build Bundle
