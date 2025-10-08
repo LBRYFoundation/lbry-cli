@@ -1,0 +1,26 @@
+name: Flatpak Beta
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Flatpak
+        run: sudo apt install flatpak flatpak-builder
+      - name: Setup Flatpak
+        run: |
+          flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install flathub org.gnome.Platform//3.36 org.gnome.Sdk//3.36 -y
+      - name: Build Flatpak
+        run: flatpak-builder --repo=repo --force-clean build-dir .flatpak/org.lbry.cli.json
+      - name: Build Bundle
+        run: flatpak build-bundle repo lbry-cli-${GITHUB_SHA::8}.flatpak org.lbry.cli
+      - name: Upload Flatpak
+        uses: actions/upload-artifact@v2
+        with:
+          name: lbry-cli.flatpak
+          path: ./lbry-cli-*.flatpak
