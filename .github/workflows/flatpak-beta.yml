@@ -20,7 +20,7 @@ jobs:
       - name: Build Bundle
         run: flatpak build-bundle repo lbry-cli-${GITHUB_SHA::8}.flatpak org.lbry.cli
       - name: Upload Flatpak
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: lbry-cli.flatpak
           path: ./lbry-cli-*.flatpak
