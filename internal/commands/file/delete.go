@@ -8,7 +8,7 @@ import (
 
 func CreateCommandFileDelete() *cobra.Command {
 	file_delete := &cobra.Command{
-		Use:   "file",
+		Use:   "delete",
 		Short: "Delete a LBRY file",
 		Run:   HandleCommandFileDelete,
 	}
